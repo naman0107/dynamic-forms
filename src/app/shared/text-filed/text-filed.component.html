@@ -1,0 +1,22 @@
+<form>
+  <label
+    class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+    for="grid-{{ label.split(' ').join('-').toLowerCase() }}"
+  >
+    {{ label }}
+  </label>
+
+  <input
+    [formControlName]="controlKey"
+    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+    id="grid-{{ label.split(' ').join('-').toLowerCase() }}-{{ uniqueID }}"
+    type="text"
+    [placeholder]="placeholder"
+  />
+  <p
+    class="text-red-500 text-xs italic"
+    *ngIf="parentFormGroup.get(controlKey)?.touched && !parentFormGroup.valid"
+  >
+    Please fill out this field.
+  </p>
+</form>
